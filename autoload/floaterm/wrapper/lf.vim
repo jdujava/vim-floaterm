@@ -10,8 +10,11 @@ function! floaterm#wrapper#lf#(cmd, jobopts, config) abort
   " let original_dir = getcwd()
   " lcd %:p:h
 
+  " uncomment to disable ueberzug previews in neovim
+  " unlet $FIFO_UEBERZUG
+
   let cmdlist = split(a:cmd)
-  let cmd = 'lf -selection-path="' . s:lf_tmpfile . '"'
+  let cmd = 'lfimg -selection-path="' . s:lf_tmpfile . '"'
   if len(cmdlist) > 1
     let cmd .= ' ' . join(cmdlist[1:], ' ')
   else
