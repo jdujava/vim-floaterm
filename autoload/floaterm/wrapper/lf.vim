@@ -7,8 +7,8 @@
 
 function! floaterm#wrapper#lf#(cmd, jobopts, config) abort
   let s:lf_tmpfile = tempname()
-  let original_dir = getcwd()
-  lcd %:p:h
+  " let original_dir = getcwd()
+  " lcd %:p:h
 
   let cmdlist = split(a:cmd)
   let cmd = 'lf -selection-path="' . s:lf_tmpfile . '"'
@@ -24,7 +24,7 @@ function! floaterm#wrapper#lf#(cmd, jobopts, config) abort
     endif
   endif
 
-  exe "lcd " . original_dir
+  " exe "lcd " . original_dir
   let cmd = [&shell, &shellcmdflag, cmd]
   let jobopts = {'on_exit': funcref('s:lf_callback')}
   call floaterm#util#deep_extend(a:jobopts, jobopts)

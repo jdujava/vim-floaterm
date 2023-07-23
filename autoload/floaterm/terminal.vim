@@ -74,10 +74,10 @@ function! floaterm#terminal#open(bufnr, cmd, jobopts, config) abort
 
   if !bufexists(a:bufnr)
     " change cwd
-    let savedcwd = getcwd()
-    if has_key(a:config, 'cwd')
-      call floaterm#path#chdir(a:config.cwd)
-    endif
+    " let savedcwd = getcwd()
+    " if has_key(a:config, 'cwd')
+    "   call floaterm#path#chdir(a:config.cwd)
+    " endif
 
     " spawn terminal
     let bufnr = s:spawn_terminal(a:cmd, a:jobopts, a:config)
@@ -88,7 +88,7 @@ function! floaterm#terminal#open(bufnr, cmd, jobopts, config) abort
     endif
 
     " restore cwd
-    call floaterm#path#chdir(savedcwd)
+    " call floaterm#path#chdir(savedcwd)
   else
     let config = floaterm#config#parse(a:bufnr, a:config)
     call floaterm#window#open(a:bufnr, config)
